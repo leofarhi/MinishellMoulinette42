@@ -1,3 +1,5 @@
+#####################################################
+#Exemple d'un cleanOutput avec de la coloration :
 def remove_specialChar(output):
 	lines = output.split(" \n\x1b[A")
 	new_text = lines[0]
@@ -25,16 +27,9 @@ def cleanOutput(output):
 		else:
 			res += temp[0]
 	return res
+#####################################################
 
-def removePrompt(output):
-	res = ""
-	lines = output.split("@MINISHELL@>")
-	res = lines[0]
-	del lines[0]
-	for line in lines:
-		temp = line.split("\n",1)
-		if len(temp) > 1:
-			res += temp[1]
-		else:
-			res += temp[0]
-	return res
+#Exemple d'un cleanOutput avec un prompt basique :
+def cleanOutput(output):
+	output = output.replace("minishell$ ","@MINISHELL@>")
+	return output

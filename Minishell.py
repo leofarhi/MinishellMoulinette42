@@ -23,6 +23,19 @@ class Action(Enum):
 	SEND_ARROWDOWN = 9
 	CLOSE = 10
 
+def removePrompt(output):
+	res = ""
+	lines = output.split("@MINISHELL@>")
+	res = lines[0]
+	del lines[0]
+	for line in lines:
+		temp = line.split("\n",1)
+		if len(temp) > 1:
+			res += temp[1]
+		else:
+			res += temp[0]
+	return res
+
 def colorWhiteSpacesChar(char, color = "\033[41m", chars = ["\n","\t"," "]):
 	if char in chars:
 		#color background in red

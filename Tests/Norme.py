@@ -1,4 +1,5 @@
 from CheckerLib import *
+import os
 
 @AddTest("Norme")
 class TestNorme(BaseTest):
@@ -11,8 +12,10 @@ class TestNorme(BaseTest):
     def Run(self):
         normeflag = ["-R","CheckForbiddenSourceHeader"]
         norme = True
-        norme = CheckNorme("libft",normeflag) and norme
-        norme = CheckNorme("srcs",normeflag) and norme
+        norme = CheckNorme(".",normeflag) and norme
+        #Exemple de si vous voulez checker uniquement la libft et src :
+        #norme = CheckNorme("libft",normeflag) and norme
+        #norme = CheckNorme("src",normeflag) and norme
         return norme
     
     def PrintResult(self):
